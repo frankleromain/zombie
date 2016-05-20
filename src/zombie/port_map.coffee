@@ -19,7 +19,6 @@ class PortMap
     if port == 80
       mapped = @_find(hostname)
       if mapped
-        options = Object.create(options)
         options.hostname = hostname
         options.port     = mapped
     return @_http(options, callback)
