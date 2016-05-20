@@ -65,11 +65,13 @@ class DNSMask
       delete @_domains[domain]
 
   # Alternative implementation for Node's DNS.lookup.
-  lookup: (domain, family, callback)->
+  lookup: (domain, options, callback)->
     # With two arguments, second argument is the callback, family is 4 or 6
     if arguments.length == 2
-      [family, callback] = [null, family]
-
+      [options, callback] = [null, options]
+    
+    family = options ? options.family : null
+    
     # If domain is missing, lookup returns null IP
     unless domain
       setImmediate ->
