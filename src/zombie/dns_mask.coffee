@@ -70,7 +70,7 @@ class DNSMask
     if arguments.length == 2
       [options, callback] = [null, options]
     
-    family = options ? options.family : null
+    family = if options then options.family else null
     
     # If domain is missing, lookup returns null IP
     unless domain
